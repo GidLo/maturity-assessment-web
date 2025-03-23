@@ -23,28 +23,28 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   
-  // Transform the data for the radar chart - using shortened names for better display
+  // Transform the data for the radar chart with display names
   const chartData = data.map((item) => {
     // Create shorter display names for the radar chart
-    let displayName = item.name;
-    if (item.name.length > 20) {
-      // Extract key terms or use numbered categories
-      if (item.name.includes("Supply Chain Vision")) displayName = "01-Vision & Strategy";
-      else if (item.name.includes("Category")) displayName = "02-Category Mgmt";
-      else if (item.name.includes("Strategic Sourcing")) displayName = "03-Strategic Sourcing";
-      else if (item.name.includes("Contract")) displayName = "04-Contract Mgmt";
-      else if (item.name.includes("Transaction")) displayName = "05-Transaction Mgmt";
-      else if (item.name.includes("Supplier Management")) displayName = "06-Supplier Mgmt";
-      else if (item.name.includes("Warehousing")) displayName = "07-Warehousing";
-      else if (item.name.includes("Supply Management")) displayName = "08-Supply Mgmt";
-      else if (item.name.includes("Risk")) displayName = "09-Risk Mgmt";
-      else if (item.name.includes("Organisation")) displayName = "10-Organisation";
-      else if (item.name.includes("People")) displayName = "11-People";
-      else if (item.name.includes("Technology")) displayName = "12-Technology";
-      else if (item.name.includes("Performance")) displayName = "13-Performance";
-      else if (item.name.includes("ESG")) displayName = "14-ESG";
-      else if (item.name.includes("Enterprise")) displayName = "15-Supplier Dev";
-    }
+    let displayName = '';
+    
+    // Match competencies to their display names
+    if (item.name === "Supply Chain Vision and Strategy") displayName = "01-Vision & Strategy";
+    else if (item.name === "Category Management") displayName = "02-Category Mgmt";
+    else if (item.name === "Strategic Sourcing") displayName = "03-Strategic Sourcing";
+    else if (item.name === "Contract & Compliance Management") displayName = "04-Contract Mgmt";
+    else if (item.name === "Transaction Management") displayName = "05-Transaction Mgmt";
+    else if (item.name === "Supplier Management") displayName = "06-Supplier Mgmt";
+    else if (item.name === "Warehousing Operations") displayName = "07-Warehousing";
+    else if (item.name === "Supply Management") displayName = "08-Supply Mgmt";
+    else if (item.name === "Risk Management") displayName = "09-Risk Mgmt";
+    else if (item.name === "Organisation") displayName = "10-Organisation";
+    else if (item.name === "People") displayName = "11-People";
+    else if (item.name === "Technology, Data & Information") displayName = "12-Technology";
+    else if (item.name === "Performance Metrics") displayName = "13-Performance";
+    else if (item.name === "Environmental Social and Governance (ESG)") displayName = "14-ESG";
+    else if (item.name === "Enterprise & Supplier Development") displayName = "15-Supplier Dev";
+    else displayName = item.name; // Fallback to the original name if no match
     
     return {
       subject: displayName,
