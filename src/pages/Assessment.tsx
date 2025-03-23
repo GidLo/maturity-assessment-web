@@ -7,6 +7,7 @@ import QuestionCard from '@/components/QuestionCard';
 import ProgressIndicator from '@/components/ProgressIndicator';
 import { useAssessment } from '@/context/AssessmentContext';
 import { ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
 
 const Assessment = () => {
   const navigate = useNavigate();
@@ -22,9 +23,14 @@ const Assessment = () => {
   // Redirect to results page if all questions are answered
   useEffect(() => {
     if (isComplete) {
+      toast({
+        title: "Assessment Complete!",
+        description: "Redirecting to your results.",
+      });
+      
       const timer = setTimeout(() => {
         navigate('/results');
-      }, 500);
+      }, 1500);
       
       return () => clearTimeout(timer);
     }
@@ -52,6 +58,20 @@ const Assessment = () => {
     saveAnswer(answer);
   };
 
+  const handleSkip = () => {
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      toast({
+        variant: "default",
+        description: "Question skipped. You can come back to it later.",
+      });
+    }
+  };
+
+  const questionNumber = currentQuestionIndex + 1;
+  const totalQuestions = questions.length;
+  const progress = Math.round((questionNumber / totalQuestions) * 100);
+
   return (
     <>
       <Navbar />
@@ -72,8 +92,8 @@ const Assessment = () => {
               </motion.div>
               
               <ProgressIndicator 
-                currentStep={currentQuestionIndex + 1} 
-                totalSteps={questions.length}
+                currentStep={questionNumber} 
+                totalSteps={totalQuestions}
                 currentCategory={currentQuestion?.competency}
               />
             </div>
@@ -101,6 +121,13 @@ const Assessment = () => {
                 <ChevronLeft className="h-4 w-4" />
                 <span>Previous</span>
               </motion.button>
+              
+              <button
+                onClick={handleSkip}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Skip for now
+              </button>
               
               <AnimatePresence mode="wait">
                 {isLastQuestion && canGoNext ? (
