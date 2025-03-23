@@ -1,11 +1,20 @@
 
 export type CompetencyName = 
-  | 'Strategic Thinking'
-  | 'Leadership'
-  | 'Technical Expertise'
-  | 'Communication'
-  | 'Innovation'
-  | 'Operational Excellence';
+  | 'Supply Chain Vision and Strategy'
+  | 'Category Management'
+  | 'Strategic Sourcing'
+  | 'Contract & Compliance Management'
+  | 'Transaction Management'
+  | 'Supplier Management'
+  | 'Warehousing Operations'
+  | 'Supply Management'
+  | 'Risk Management'
+  | 'Organisation'
+  | 'People'
+  | 'Technology, Data & Information'
+  | 'Performance Metrics'
+  | 'Environmental Social and Governance (ESG)'
+  | 'Enterprise & Supplier Development';
 
 export type QuestionType = {
   id: number;

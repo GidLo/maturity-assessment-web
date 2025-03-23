@@ -6,12 +6,14 @@ import { motion } from 'framer-motion';
 interface ProgressIndicatorProps {
   currentStep: number;
   totalSteps: number;
+  currentCategory?: string;
   className?: string;
 }
 
 const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
   currentStep,
   totalSteps,
+  currentCategory,
   className
 }) => {
   const percentage = (currentStep / totalSteps) * 100;
@@ -31,6 +33,12 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
           transition={{ duration: 0.3, ease: "easeOut" }}
         />
       </div>
+      
+      {currentCategory && (
+        <div className="text-xs text-muted-foreground pt-1">
+          Current Category: {currentCategory}
+        </div>
+      )}
     </div>
   );
 };

@@ -16,123 +16,123 @@ type AssessmentContextType = {
 const defaultQuestions: QuestionType[] = [
   {
     id: 1,
-    text: "I develop and communicate a clear vision for the future.",
-    competency: "Strategic Thinking",
-    description: "Evaluate your ability to establish and share a compelling long-term direction."
+    text: "Our organization has a clearly defined and documented supply chain strategy aligned with business objectives.",
+    competency: "Supply Chain Vision and Strategy",
+    description: "Assess the clarity and alignment of your supply chain strategy with overall business goals."
   },
   {
     id: 2,
-    text: "I identify market trends and opportunities ahead of competitors.",
-    competency: "Strategic Thinking",
-    description: "Consider how well you recognize evolving patterns and potential areas for growth."
+    text: "We have structured category management processes with defined category strategies.",
+    competency: "Category Management",
+    description: "Evaluate your approach to organizing and managing procurement categories."
   },
   {
     id: 3,
-    text: "I make decisions based on long-term outcomes rather than short-term gains.",
-    competency: "Strategic Thinking",
-    description: "Assess your tendency to prioritize sustainable results over immediate benefits."
+    text: "Our strategic sourcing process includes comprehensive market analysis and supplier evaluation.",
+    competency: "Strategic Sourcing",
+    description: "Consider how effectively you identify, evaluate and select suppliers through structured processes."
   },
   {
     id: 4,
-    text: "I inspire others to achieve beyond what they thought possible.",
-    competency: "Leadership",
-    description: "Reflect on your ability to motivate others to exceed their perceived limitations."
+    text: "We have standardized contract management processes with clear compliance monitoring.",
+    competency: "Contract & Compliance Management",
+    description: "Assess your ability to create, manage, and monitor contracts for compliance."
   },
   {
     id: 5,
-    text: "I provide clear direction and constructive feedback to team members.",
-    competency: "Leadership",
-    description: "Evaluate how effectively you guide and provide insights to improve team performance."
+    text: "Our transaction management processes are efficient with minimal manual intervention.",
+    competency: "Transaction Management",
+    description: "Evaluate the efficiency of your procurement-to-pay processes."
   },
   {
     id: 6,
-    text: "I remain composed and effective when facing challenges or setbacks.",
-    competency: "Leadership",
-    description: "Consider your resilience and ability to maintain performance under pressure."
+    text: "We have formal supplier relationship management programs with performance reviews.",
+    competency: "Supplier Management",
+    description: "Consider how effectively you manage ongoing relationships with suppliers."
   },
   {
     id: 7,
-    text: "I am proficient with the technical tools and methodologies required for my role.",
-    competency: "Technical Expertise",
-    description: "Assess your mastery of the specialized skills needed in your position."
+    text: "Our warehousing operations are optimized with effective inventory management practices.",
+    competency: "Warehousing Operations",
+    description: "Assess the efficiency and effectiveness of your warehouse management."
   },
   {
     id: 8,
-    text: "I continuously update my technical knowledge to stay current with industry developments.",
-    competency: "Technical Expertise",
-    description: "Evaluate your commitment to ongoing learning and professional development."
+    text: "We have robust supply planning processes that balance demand and inventory levels.",
+    competency: "Supply Management",
+    description: "Evaluate your ability to plan and manage supply to meet demand."
   },
   {
     id: 9,
-    text: "I effectively apply technical knowledge to solve complex problems.",
-    competency: "Technical Expertise",
-    description: "Consider how well you utilize your expertise to address complicated challenges."
+    text: "Our organization has formalized risk management processes across the supply chain.",
+    competency: "Risk Management",
+    description: "Consider how well you identify, assess, and mitigate supply chain risks."
   },
   {
     id: 10,
-    text: "I express ideas clearly and concisely in both written and verbal communication.",
-    competency: "Communication",
-    description: "Reflect on your ability to articulate thoughts effectively across different mediums."
+    text: "Our organizational structure supports effective supply chain management with clear roles.",
+    competency: "Organisation",
+    description: "Assess how well your organizational design supports supply chain functions."
   },
   {
     id: 11,
-    text: "I listen attentively and ensure I understand others' perspectives before responding.",
-    competency: "Communication",
-    description: "Assess your receptiveness to others' input and comprehension before formulating responses."
+    text: "We invest in developing supply chain talent with specialized skills and training.",
+    competency: "People",
+    description: "Evaluate your approach to developing human capital in supply chain roles."
   },
   {
     id: 12,
-    text: "I tailor my communication style to suit different audiences and situations.",
-    competency: "Communication",
-    description: "Evaluate your adaptability in how you communicate based on context and recipients."
+    text: "Our technology systems provide end-to-end visibility and support data-driven decisions.",
+    competency: "Technology, Data & Information",
+    description: "Consider how effectively you leverage technology and data in supply chain operations."
   },
   {
     id: 13,
-    text: "I generate original ideas that create value for the organization.",
-    competency: "Innovation",
-    description: "Consider your capacity to develop novel concepts that benefit your company."
+    text: "We have comprehensive KPIs that measure supply chain performance at multiple levels.",
+    competency: "Performance Metrics",
+    description: "Assess your approach to measuring and improving supply chain performance."
   },
   {
     id: 14,
-    text: "I encourage and support creative thinking among team members.",
-    competency: "Innovation",
-    description: "Reflect on how you foster and nurture innovation in others."
+    text: "Our supply chain practices incorporate environmental and social responsibility considerations.",
+    competency: "Environmental Social and Governance (ESG)",
+    description: "Evaluate how well sustainability principles are integrated into your supply chain."
   },
   {
     id: 15,
-    text: "I am willing to challenge conventional approaches to find better solutions.",
-    competency: "Innovation",
-    description: "Assess your readiness to question established methods in pursuit of improvements."
+    text: "We have programs to develop local suppliers and support inclusive procurement practices.",
+    competency: "Enterprise & Supplier Development",
+    description: "Consider your efforts to develop diverse and local supplier capabilities."
   },
   {
     id: 16,
-    text: "I establish efficient processes that optimize productivity.",
-    competency: "Operational Excellence",
-    description: "Evaluate your ability to create streamlined workflows that enhance output."
+    text: "We regularly review and update our supply chain strategy based on market changes.",
+    competency: "Supply Chain Vision and Strategy",
+    description: "Assess how adaptable your supply chain strategy is to changing business conditions."
   },
   {
     id: 17,
-    text: "I consistently deliver high-quality work that meets or exceeds standards.",
-    competency: "Operational Excellence",
-    description: "Consider your track record of producing exceptional results that satisfy requirements."
+    text: "Our category strategies include total cost of ownership analysis and value creation.",
+    competency: "Category Management",
+    description: "Evaluate how comprehensively you assess category value beyond immediate price."
   },
   {
     id: 18,
-    text: "I identify and eliminate inefficiencies in work processes.",
-    competency: "Operational Excellence",
-    description: "Assess how effectively you recognize and remove obstacles to productivity."
+    text: "We use digital tools to enhance transparency and efficiency in transaction processing.",
+    competency: "Transaction Management",
+    description: "Consider your use of technology to streamline procurement transactions."
   },
   {
     id: 19,
-    text: "I adapt quickly to changing priorities and requirements.",
-    competency: "Strategic Thinking",
-    description: "Reflect on your flexibility when faced with shifting objectives."
+    text: "Our risk management includes proactive monitoring of supplier financial health.",
+    competency: "Risk Management",
+    description: "Assess your ability to identify financial risks in your supply base."
   },
   {
     id: 20,
-    text: "I maintain a balanced perspective on both immediate needs and future goals.",
-    competency: "Strategic Thinking",
-    description: "Evaluate your ability to address current demands while keeping sight of long-term objectives."
+    text: "We track and report on diversity and inclusion metrics in our procurement activities.",
+    competency: "Enterprise & Supplier Development",
+    description: "Evaluate how you measure and promote diversity in your supply chain."
   }
 ];
 

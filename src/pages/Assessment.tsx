@@ -65,15 +65,16 @@ const Assessment = () => {
                 transition={{ duration: 0.4 }}
                 className="text-center space-y-2"
               >
-                <h1 className="text-2xl md:text-3xl font-medium">Maturity Assessment</h1>
+                <h1 className="text-2xl md:text-3xl font-medium">Supply Chain Maturity Assessment</h1>
                 <p className="text-muted-foreground">
-                  Rate each statement based on how accurately it describes you
+                  Rate each statement based on how accurately it describes your organization
                 </p>
               </motion.div>
               
               <ProgressIndicator 
                 currentStep={currentQuestionIndex + 1} 
-                totalSteps={questions.length} 
+                totalSteps={questions.length}
+                currentCategory={currentQuestion?.competency}
               />
             </div>
             
