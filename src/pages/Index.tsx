@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import { ChevronRight, BarChart, Award, Target, Brain, Star, Zap } from 'lucide-react';
+
 const Index = () => {
   const staggerVariants = {
     hidden: {
@@ -54,6 +55,7 @@ const Index = () => {
     icon: ChevronRight,
     description: "Active management of supplier numbers with defined strategies for performance management."
   }];
+
   return <>
       <Navbar />
       <main className="min-h-screen pt-16 pb-16">
@@ -81,8 +83,8 @@ const Index = () => {
                   scale: 1.02
                 }} whileTap={{
                   scale: 0.98
-                }} className="glass-effect inline-flex items-center px-6 py-3 rounded-full shadow-subtle bg-red-500 hover:bg-red-400 font-normal text-center text-gray-900">
-                    <span className="font-medium text-slate-50">Start Assessment</span>
+                }} className="inline-flex items-center px-6 py-3 rounded-full shadow-subtle bg-[#db536a] hover:bg-[#db536a]/90 font-normal text-center text-slate-50">
+                    <span className="font-medium">Start Assessment</span>
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </motion.button>
                 </Link>
@@ -200,4 +202,5 @@ const Index = () => {
       </footer>
     </>;
 };
+
 export default Index;
