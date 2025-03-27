@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import { ChevronRight, BarChart, Award, Target, Brain, Star, Zap } from 'lucide-react';
+
 const Index = () => {
   const staggerVariants = {
     hidden: {
@@ -30,30 +31,31 @@ const Index = () => {
     }
   };
   const competencies = [{
-    name: "Strategic Thinking",
+    name: "Supply Chain Vision and Strategy",
     icon: Brain,
-    description: "Ability to develop and execute long-term plans aligned with organizational goals."
+    description: "Development and implementation of Supply Chain improvement initiatives aligned with business strategy."
   }, {
-    name: "Leadership",
-    icon: Star,
-    description: "Capacity to inspire, guide, and develop teams to achieve exceptional results."
-  }, {
-    name: "Technical Expertise",
-    icon: Zap,
-    description: "Mastery of relevant skills, tools, and methodologies required for your role."
-  }, {
-    name: "Communication",
-    icon: ChevronRight,
-    description: "Effectiveness in conveying information clearly and building understanding across diverse audiences."
-  }, {
-    name: "Innovation",
-    icon: Award,
-    description: "Ability to generate and implement creative ideas that add value."
-  }, {
-    name: "Operational Excellence",
+    name: "Category Management",
     icon: Target,
-    description: "Skill in optimizing processes and consistently delivering high-quality results."
+    description: "Effective management of spend categories and coordination of procurement across the organization."
+  }, {
+    name: "Strategic Sourcing",
+    icon: Award,
+    description: "Rigorous decision-making and consistent application of sourcing processes throughout the organization."
+  }, {
+    name: "Contract & Compliance Management",
+    icon: Star,
+    description: "Sophisticated contract models and formalized management to ensure compliance with preferred suppliers."
+  }, {
+    name: "Transaction Management",
+    icon: Zap,
+    description: "Effective controls and automation in the Procure-to-Pay process to maximize compliant purchasing."
+  }, {
+    name: "Supplier Management",
+    icon: ChevronRight,
+    description: "Active management of supplier numbers with defined strategies for performance management."
   }];
+
   return <>
       <Navbar />
       <main className="min-h-screen pt-16 pb-16">
@@ -109,7 +111,7 @@ const Index = () => {
           }}>
               <h2 className="text-3xl md:text-4xl font-medium tracking-tight">Measured Competencies</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Our assessment evaluates your proficiency across six essential professional domains
+                Our assessment evaluates your proficiency across six essential supply chain domains
               </p>
             </motion.div>
             
@@ -202,4 +204,5 @@ const Index = () => {
       </footer>
     </>;
 };
+
 export default Index;
