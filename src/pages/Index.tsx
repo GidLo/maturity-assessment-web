@@ -81,7 +81,7 @@ const Index = () => {
                   scale: 1.02
                 }} whileTap={{
                   scale: 0.98
-                }} className="glass-effect inline-flex items-center px-6 py-3 rounded-full bg-[#db536a] hover:bg-[#db536a]/90 shadow-subtle text-red-400">
+                }} className="glass-effect inline-flex items-center px-6 py-3 rounded-full shadow-subtle text-red-400 bg-red-500 hover:bg-red-400">
                     <span className="font-medium text-slate-50">Start Assessment</span>
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </motion.button>
