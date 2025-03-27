@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -85,7 +86,7 @@ const Index = () => {
                   scale: 1.02
                 }} whileTap={{
                   scale: 0.98
-                }} className="glass-effect inline-flex items-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-subtle">
+                }} className="glass-effect inline-flex items-center px-6 py-3 rounded-full bg-[#db536a] text-primary-foreground hover:bg-[#db536a]/90 shadow-subtle">
                     <span className="font-medium">Start Assessment</span>
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </motion.button>
@@ -118,7 +119,7 @@ const Index = () => {
             <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" variants={staggerVariants} initial="hidden" animate="visible">
               {competencies.map((competency, index) => <motion.div key={competency.name} variants={itemVariants} className="glass-card rounded-xl p-6 transition-all duration-300 hover:shadow-elegant">
                   <div className="flex flex-col h-full space-y-4">
-                    <div className="inline-flex size-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground">
+                    <div className="inline-flex size-10 items-center justify-center rounded-full bg-secondary text-[#dc6900]">
                       <competency.icon className="size-5" />
                     </div>
                     <h3 className="text-xl font-medium">{competency.name}</h3>
@@ -144,17 +145,17 @@ const Index = () => {
               step: "1",
               title: "Complete Assessment",
               description: "Answer 20 questions about your professional skills and behaviors.",
-              icon: <div className="text-2xl font-medium">01</div>
+              icon: <div className="text-2xl font-medium text-[#dc6900]">01</div>
             }, {
               step: "2",
               title: "Get Instant Results",
               description: "View your competency profile in an intuitive spider diagram.",
-              icon: <div className="text-2xl font-medium">02</div>
+              icon: <div className="text-2xl font-medium text-[#dc6900]">02</div>
             }, {
               step: "3",
               title: "Identify Opportunities",
               description: "Focus your development on areas with the greatest growth potential.",
-              icon: <div className="text-2xl font-medium">03</div>
+              icon: <div className="text-2xl font-medium text-[#dc6900]">03</div>
             }].map((item, index) => <div key={index} className="relative">
                   <div className="flex flex-col items-center text-center space-y-4">
                     <div className="size-14 flex items-center justify-center rounded-full bg-secondary border border-border">
@@ -166,7 +167,7 @@ const Index = () => {
                   
                   {/* Connector line */}
                   {index < 2 && <div className="hidden md:block absolute top-7 left-full w-full h-0.5 bg-border -z-10">
-                      <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary"></div>
+                      <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#dc6900]"></div>
                     </div>}
                 </div>)}
             </div>
@@ -177,7 +178,7 @@ const Index = () => {
                 scale: 1.02
               }} whileTap={{
                 scale: 0.98
-              }} className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+              }} className="inline-flex items-center px-6 py-3 rounded-full bg-[#db536a] text-primary-foreground hover:bg-[#db536a]/90">
                   <span className="font-medium">Begin Your Assessment</span>
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </motion.button>
@@ -191,7 +192,7 @@ const Index = () => {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="relative size-6 bg-primary rounded-full overflow-hidden">
+              <div className="relative size-6 bg-[#dc6900] rounded-full overflow-hidden">
                 <div className="absolute inset-1 bg-background rounded-full"></div>
               </div>
               <span className="font-medium">Maturity Assessment</span>
