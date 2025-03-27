@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import { ChevronRight, BarChart, Award, Target, Brain, Star, Zap } from 'lucide-react';
-
 const Index = () => {
   const staggerVariants = {
     hidden: {
@@ -55,7 +54,6 @@ const Index = () => {
     icon: ChevronRight,
     description: "Active management of supplier numbers with defined strategies for performance management."
   }];
-
   return <>
       <Navbar />
       <main className="min-h-screen pt-16 pb-16">
@@ -75,8 +73,8 @@ const Index = () => {
             ease: [0.22, 1, 0.36, 1]
           }}>
               <div className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground mb-2">Digital Accelerator demo</div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground">Supply Chain Maturity Assessment</h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">Evaluate your Supply Chain organisational maturity across 15 key competencies.</p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground">Procurement Maturity Assessment</h1>
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">Evaluate your Procurement organisational maturity across 15 key competencies.</p>
               <div className="pt-4 bg-slate-50">
                 <Link to="/assessment">
                   <motion.button whileHover={{
@@ -202,5 +200,4 @@ const Index = () => {
       </footer>
     </>;
 };
-
 export default Index;
