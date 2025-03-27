@@ -106,9 +106,7 @@ const Index = () => {
             ease: [0.22, 1, 0.36, 1]
           }}>
               <h2 className="text-3xl md:text-4xl font-medium tracking-tight">Measured Competencies</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Our assessment evaluates your proficiency across six essential supply chain domains
-              </p>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Our assessment evaluates your proficiency across fifteen competencies, amongst these the below six</p>
             </motion.div>
             
             <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" variants={staggerVariants} initial="hidden" animate="visible">
