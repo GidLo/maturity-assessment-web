@@ -1,10 +1,8 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import { ChevronRight, BarChart, Award, Target, Brain, Star, Zap } from 'lucide-react';
-
 const Index = () => {
   const staggerVariants = {
     hidden: {
@@ -56,12 +54,11 @@ const Index = () => {
     icon: ChevronRight,
     description: "Active management of supplier numbers with defined strategies for performance management."
   }];
-
   return <>
       <Navbar />
       <main className="min-h-screen pt-16 pb-16">
         {/* Hero section */}
-        <section className="relative py-20 md:py-32 overflow-hidden">
+        <section className="relative py-20 md:py-32 overflow-hidden bg-slate-50">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(var(--primary-rgb),0.08),transparent_50%)]" />
           
           <div className="container max-w-5xl px-4 md:px-6">
@@ -75,19 +72,17 @@ const Index = () => {
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1]
           }}>
-              <div className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground mb-2">Professional Development</div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground">
-                Maturity Assessment
-              </h1>
+              <div className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground mb-2">Digital Accelerator demo</div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground">Supply Chain Maturity Assessment</h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">Evaluate your Supply Chain organisational maturity across 15 key competencies.</p>
-              <div className="pt-4">
+              <div className="pt-4 bg-slate-50">
                 <Link to="/assessment">
                   <motion.button whileHover={{
                   scale: 1.02
                 }} whileTap={{
                   scale: 0.98
-                }} className="glass-effect inline-flex items-center px-6 py-3 rounded-full bg-[#db536a] text-primary-foreground hover:bg-[#db536a]/90 shadow-subtle">
-                    <span className="font-medium">Start Assessment</span>
+                }} className="glass-effect inline-flex items-center px-6 py-3 rounded-full bg-[#db536a] hover:bg-[#db536a]/90 shadow-subtle text-red-400">
+                    <span className="font-medium text-slate-50">Start Assessment</span>
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </motion.button>
                 </Link>
@@ -205,5 +200,4 @@ const Index = () => {
       </footer>
     </>;
 };
-
 export default Index;
