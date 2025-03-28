@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -10,10 +9,14 @@ import { useAssessment } from '@/context/AssessmentContext';
 import { Download, Share2, RefreshCw, Save } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
-// Initialize Supabase client
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
-const supabase = createClient(supabaseUrl, supabaseKey);
+// Initialize Supabase client with null checking
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+// Only create the client if both URL and key are available
+const supabase = (supabaseUrl && supabaseKey) 
+  ? createClient(supabaseUrl, supabaseKey)
+  : null;
 
 const Results = () => {
   const navigate = useNavigate();
@@ -101,6 +104,16 @@ const Results = () => {
       toast({
         title: "Already saved",
         description: "This assessment result has already been saved to the database.",
+      });
+      return;
+    }
+
+    // Check if Supabase client is available
+    if (!supabase) {
+      toast({
+        title: "Configuration Error",
+        description: "Supabase credentials are not properly configured. Please contact the administrator.",
+        variant: "destructive"
       });
       return;
     }
@@ -247,16 +260,25 @@ const Results = () => {
                 
                 <button 
                   onClick={saveResultsToSupabase}
-                  disabled={isSaving || isSaved}
+                  disabled={isSaving || isSaved || !supabase}
                   className={`inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg border border-input ${
-                    isSaved 
-                      ? 'bg-green-100 text-green-700 hover:bg-green-100 cursor-default' 
-                      : 'bg-background hover:bg-secondary'
+                    !supabase 
+                      ? 'bg-muted text-muted-foreground cursor-not-allowed' 
+                      : isSaved 
+                        ? 'bg-green-100 text-green-700 hover:bg-green-100 cursor-default' 
+                        : 'bg-background hover:bg-secondary'
                   }`}
                 >
                   <Save className="size-4" />
                   <span>
-                    {isSaving ? 'Saving...' : isSaved ? 'Saved to Database' : 'Save to Database'}
+                    {!supabase 
+                      ? 'Supabase Not Configured' 
+                      : isSaving 
+                        ? 'Saving...' 
+                        : isSaved 
+                          ? 'Saved to Database' 
+                          : 'Save to Database'
+                    }
                   </span>
                 </button>
                 
