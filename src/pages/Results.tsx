@@ -1,15 +1,26 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { createClient } from '@supabase/supabase-js';
 import Navbar from '@/components/Navbar';
 import SpiderChart from '@/components/SpiderChart';
+import ResultsTable from '@/components/ResultsTable';
 import { useAssessment } from '@/context/AssessmentContext';
-import { Download, Share2, RefreshCw } from 'lucide-react';
+import { Download, Share2, RefreshCw, Save } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
+
+// Initialize Supabase client
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const Results = () => {
   const navigate = useNavigate();
   const { results, isComplete } = useAssessment();
+  const { toast } = useToast();
+  const [isSaving, setIsSaving] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   // Redirect to assessment if no results
   useEffect(() => {
@@ -82,6 +93,64 @@ const Results = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  // Function to save results to Supabase
+  const saveResultsToSupabase = async () => {
+    if (isSaved) {
+      toast({
+        title: "Already saved",
+        description: "This assessment result has already been saved to the database.",
+      });
+      return;
+    }
+
+    setIsSaving(true);
+
+    try {
+      // Create the data object for Supabase
+      const resultData = {
+        completed_at: results.completedAt,
+        overall_score: results.overallScore,
+        max_possible_score: results.maxPossibleScore,
+        overall_average: overallAverage.toFixed(1),
+        competencies: results.competencies.map(comp => ({
+          name: comp.name,
+          score: comp.score,
+          max_score: comp.maxScore,
+          average: ((comp.score / comp.maxScore) * 5).toFixed(1)
+        }))
+      };
+
+      // Insert data into Supabase
+      const { error } = await supabase
+        .from('assessment_results')
+        .insert([resultData]);
+
+      if (error) {
+        console.error('Error saving to Supabase:', error);
+        toast({
+          title: "Error",
+          description: "Failed to save assessment results to database.",
+          variant: "destructive"
+        });
+      } else {
+        setIsSaved(true);
+        toast({
+          title: "Success",
+          description: "Assessment results saved to database successfully.",
+        });
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred while saving results.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -176,6 +245,21 @@ const Results = () => {
                   <span>Download Excel Report</span>
                 </button>
                 
+                <button 
+                  onClick={saveResultsToSupabase}
+                  disabled={isSaving || isSaved}
+                  className={`inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg border border-input ${
+                    isSaved 
+                      ? 'bg-green-100 text-green-700 hover:bg-green-100 cursor-default' 
+                      : 'bg-background hover:bg-secondary'
+                  }`}
+                >
+                  <Save className="size-4" />
+                  <span>
+                    {isSaving ? 'Saving...' : isSaved ? 'Saved to Database' : 'Save to Database'}
+                  </span>
+                </button>
+                
                 <button className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg border border-input bg-background hover:bg-secondary">
                   <Share2 className="size-4" />
                   <span>Share Results</span>
@@ -190,6 +274,18 @@ const Results = () => {
                 </button>
               </div>
             </motion.div>
+          </motion.div>
+          
+          <motion.div
+            variants={itemVariants}
+            className="mt-12 glass-card rounded-xl overflow-hidden"
+          >
+            <div className="p-6 border-b border-border">
+              <h2 className="text-xl font-medium">Detailed Results</h2>
+            </div>
+            <div className="p-6 overflow-auto">
+              <ResultsTable results={results} />
+            </div>
           </motion.div>
         </div>
       </main>
