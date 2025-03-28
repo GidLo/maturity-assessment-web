@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { QuestionType, AnswerType } from '@/types/assessment';
 import RatingSelector from './RatingSelector';
-import { Info } from 'lucide-react';
+import { Info, ChevronDown, ChevronUp, Eye } from 'lucide-react';
 
 interface QuestionCardProps {
   question: QuestionType;
@@ -19,6 +19,15 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   isActive
 }) => {
   const [showDescription, setShowDescription] = useState(false);
+  const [showLevelDescriptions, setShowLevelDescriptions] = useState(false);
+  
+  const levelDescriptions = [
+    "No evidence of efforts to assess new procedures, tools and techniques.",
+    "Supply Chain sporadically assesses new procedures, tools and techniques but there is limited forward planning.",
+    "Supply Chain monitoring of developments in procedures, tools and techniques for potential application is informal.",
+    "Supply Chain actively monitors developments in procedures, tools and techniques for potential application.",
+    "Supply Chain leaders follow and implement innovations and trends in Procurement and Supply Chain."
+  ];
   
   const handleRatingChange = (rating: number) => {
     onAnswer({
@@ -85,6 +94,44 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 value={answer?.rating || 0}
                 onChange={handleRatingChange}
               />
+              
+              <div className="mt-4">
+                <button
+                  onClick={() => setShowLevelDescriptions(!showLevelDescriptions)}
+                  className="flex items-center justify-center w-full gap-2 text-sm px-4 py-2 rounded-md bg-secondary/50 hover:bg-secondary transition-colors"
+                >
+                  <Eye className="size-4" />
+                  <span>
+                    {showLevelDescriptions 
+                      ? "Hide level descriptions" 
+                      : "Show description of levels"
+                    }
+                  </span>
+                  {showLevelDescriptions 
+                    ? <ChevronUp className="size-4" /> 
+                    : <ChevronDown className="size-4" />
+                  }
+                </button>
+                
+                <AnimatePresence>
+                  {showLevelDescriptions && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-3 space-y-2 text-sm bg-secondary/20 rounded-md p-3"
+                    >
+                      {levelDescriptions.map((desc, index) => (
+                        <div key={index} className="flex gap-2">
+                          <span className="flex-shrink-0 font-semibold">{index + 1}.</span>
+                          <p className="text-muted-foreground">{desc}</p>
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </motion.div>
