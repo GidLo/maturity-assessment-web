@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import { ChevronRight, BarChart, Award, Target, Brain, Star, Zap } from 'lucide-react';
+
 const Index = () => {
   const staggerVariants = {
     hidden: {
@@ -36,24 +37,25 @@ const Index = () => {
   }, {
     name: "Category Management",
     icon: Target,
-    description: "Effective management of spend categories and coordination of procurement across the organization."
+    description: "Effective management of spend categories and coordination of procurement across the organisation."
   }, {
     name: "Strategic Sourcing",
     icon: Award,
-    description: "Rigorous decision-making and consistent application of sourcing processes throughout the organization."
+    description: "Rigorous decision-making and consistent application of sourcing processes throughout the organisation."
   }, {
     name: "Contract & Compliance Management",
     icon: Star,
-    description: "Sophisticated contract models and formalized management to ensure compliance with preferred suppliers."
+    description: "Sophisticated contract models and formalised management to ensure compliance with preferred suppliers."
   }, {
     name: "Transaction Management",
     icon: Zap,
-    description: "Effective controls and automation in the Procure-to-Pay process to maximize compliant purchasing."
+    description: "Effective controls and automation in the Procure-to-Pay process to maximise compliant purchasing."
   }, {
     name: "Supplier Management",
     icon: ChevronRight,
     description: "Active management of supplier numbers with defined strategies for performance management."
   }];
+
   return <>
       <Navbar />
       <main className="min-h-screen pt-16 pb-16">
@@ -198,4 +200,5 @@ const Index = () => {
       </footer>
     </>;
 };
+
 export default Index;
