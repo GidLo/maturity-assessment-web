@@ -51,20 +51,20 @@ const Results = () => {
     const headers = ['Competency', 'Score', 'Max Score', 'Average (out of 5)'];
     const csvRows = [headers];
     
-    // Add data for each competency
+    // Add data for each competency - wrap names in quotes to handle commas
     results.competencies.forEach((comp) => {
       const averageScore = (comp.score / comp.maxScore) * 5;
       csvRows.push([
-        comp.name,
+        `"${comp.name}"`, // Wrap competency name in quotes to handle commas
         comp.score.toString(),
         comp.maxScore.toString(),
         averageScore.toFixed(1)
       ]);
     });
     
-    // Add overall score
+    // Add overall score - wrap "OVERALL" in quotes for consistency
     csvRows.push([
-      'OVERALL',
+      '"OVERALL"',
       results.overallScore.toString(),
       results.maxPossibleScore.toString(),
       overallAverage.toFixed(1)
