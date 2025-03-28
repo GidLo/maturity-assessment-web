@@ -45,6 +45,45 @@ const Results = () => {
     },
   };
 
+  // Function to generate and download CSV
+  const downloadExcelReport = () => {
+    // Create CSV header
+    const headers = ['Competency', 'Score', 'Max Score', 'Average (out of 5)'];
+    const csvRows = [headers];
+    
+    // Add data for each competency
+    results.competencies.forEach((comp) => {
+      const averageScore = (comp.score / comp.maxScore) * 5;
+      csvRows.push([
+        comp.name,
+        comp.score.toString(),
+        comp.maxScore.toString(),
+        averageScore.toFixed(1)
+      ]);
+    });
+    
+    // Add overall score
+    csvRows.push([
+      'OVERALL',
+      results.overallScore.toString(),
+      results.maxPossibleScore.toString(),
+      overallAverage.toFixed(1)
+    ]);
+    
+    // Convert to CSV string
+    const csvContent = csvRows.map(row => row.join(',')).join('\n');
+    
+    // Create and trigger download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'procurement_maturity_assessment.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <Navbar />
@@ -129,9 +168,12 @@ const Results = () => {
               </div>
               
               <div className="flex flex-col space-y-3">
-                <button className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg border border-input bg-background hover:bg-secondary">
+                <button 
+                  onClick={downloadExcelReport}
+                  className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg border border-input bg-background hover:bg-secondary"
+                >
                   <Download className="size-4" />
-                  <span>Download PDF Report</span>
+                  <span>Download Excel Report</span>
                 </button>
                 
                 <button className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg border border-input bg-background hover:bg-secondary">
