@@ -79,7 +79,7 @@ const Index = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground">Procurement Maturity Assessment</h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">Evaluate your Procurement organisational maturity across 15 key competencies.</p>
               <div className="pt-4 bg-slate-50">
-                <Link to="/assessment">
+                <Link to="/user-form">
                   <motion.button whileHover={{
                   scale: 1.02
                 }} whileTap={{
@@ -169,7 +169,7 @@ const Index = () => {
             </div>
             
             <div className="mt-16 text-center">
-              <Link to="/assessment">
+              <Link to="/user-form">
                 <motion.button whileHover={{
                 scale: 1.02
               }} whileTap={{

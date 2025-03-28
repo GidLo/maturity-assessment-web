@@ -1,4 +1,5 @@
 
+
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -51,6 +52,9 @@ const Assessment = () => {
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
+    } else {
+      // If on the first question, go back to the form page
+      navigate('/user-form');
     }
   };
   
@@ -172,3 +176,4 @@ const Assessment = () => {
 };
 
 export default Assessment;
+
