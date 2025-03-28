@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -139,7 +140,7 @@ const Index = () => {
               {[{
               step: "1",
               title: "Complete Assessment",
-              description: "Answer 20 questions about your professional skills and behaviors.",
+              description: "Answer questions about your procurement maturity.",
               icon: <div className="text-2xl font-medium text-[#dc6900]">01</div>
             }, {
               step: "2",
