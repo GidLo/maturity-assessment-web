@@ -23,6 +23,7 @@ const Results = () => {
   }
 
   const overallPercentage = (results.overallScore / results.maxPossibleScore) * 100;
+  const overallAverage = results.overallScore / (results.maxPossibleScore / 5);
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -87,11 +88,11 @@ const Results = () => {
                 <div className="p-6 text-center">
                   <div className="inline-flex items-center justify-center rounded-full size-32 border-4 border-primary/20">
                     <div className="text-3xl font-semibold">
-                      {Math.round(overallPercentage)}%
+                      {overallAverage.toFixed(1)}/5
                     </div>
                   </div>
                   <div className="mt-4 text-muted-foreground">
-                    {results.overallScore} out of {results.maxPossibleScore} points
+                    Average maturity level
                   </div>
                 </div>
               </div>
@@ -103,21 +104,26 @@ const Results = () => {
                 <div className="p-6">
                   <ul className="space-y-4">
                     {results.competencies
-                      .sort((a, b) => b.percentage - a.percentage)
-                      .map((competency) => (
-                        <li key={competency.name} className="space-y-2">
-                          <div className="flex justify-between">
-                            <span className="font-medium">{competency.name}</span>
-                            <span>{Math.round(competency.percentage)}%</span>
-                          </div>
-                          <div className="w-full h-1.5 bg-secondary rounded-full overflow-hidden">
-                            <div 
-                              className="h-full bg-primary rounded-full"
-                              style={{ width: `${competency.percentage}%` }}
-                            />
-                          </div>
-                        </li>
-                    ))}
+                      .sort((a, b) => (b.score/b.maxScore) - (a.score/a.maxScore))
+                      .map((competency) => {
+                        // Calculate average on 5-point scale
+                        const averageScore = (competency.score / competency.maxScore) * 5;
+                        return (
+                          <li key={competency.name} className="space-y-2">
+                            <div className="flex justify-between">
+                              <span className="font-medium">{competency.name}</span>
+                              <span>{averageScore.toFixed(1)}/5</span>
+                            </div>
+                            <div className="w-full h-1.5 bg-secondary rounded-full overflow-hidden">
+                              <div 
+                                className="h-full bg-primary rounded-full"
+                                style={{ width: `${competency.percentage}%` }}
+                              />
+                            </div>
+                          </li>
+                        );
+                      })
+                    }
                   </ul>
                 </div>
               </div>

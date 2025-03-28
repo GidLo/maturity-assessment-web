@@ -19,7 +19,7 @@ interface SpiderChartProps {
 
 const SpiderChart: React.FC<SpiderChartProps> = ({ 
   data,
-  maxValue = 100
+  maxValue = 5 // Changed from 100 to 5
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   
@@ -46,9 +46,12 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
     else if (item.name === "Enterprise & Supplier Development") displayName = "15-Supplier Dev";
     else displayName = item.name; // Fallback to the original name if no match
     
+    // Calculate average on 5-point scale
+    const averageScore = (item.score / item.maxScore) * 5;
+    
     return {
       subject: displayName,
-      A: item.percentage,
+      A: averageScore, // Use average out of 5 instead of percentage
       fullMark: maxValue,
       originalName: item.name // Keep original name for tooltips
     };
