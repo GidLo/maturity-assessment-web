@@ -41,3 +41,9 @@ export type AssessmentResults = {
   maxPossibleScore: number;
   completedAt: string;
 };
+
+export type UserFormData = {
+  industry: string;
+  companyName: string;
+  role: string;
+};

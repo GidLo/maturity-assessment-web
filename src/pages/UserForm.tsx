@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Navbar from '@/components/Navbar';
 import { Button } from '@/components/ui/button';
+import { useAssessment } from '@/context/AssessmentContext';
 import {
   Form,
   FormControl,
@@ -71,6 +72,7 @@ const industries = [
 
 const UserForm = () => {
   const navigate = useNavigate();
+  const { setUserFormData } = useAssessment();
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -82,8 +84,9 @@ const UserForm = () => {
   });
 
   function onSubmit(data: FormValues) {
-    // In a real application, you might want to store this data in context or localStorage
-    // For now, we'll just show a toast and navigate to the assessment
+    // Save form data to context
+    setUserFormData(data);
+    
     console.log("Form data:", data);
     
     // Show success toast

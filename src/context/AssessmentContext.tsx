@@ -1,9 +1,12 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { AnswerType, QuestionType, AssessmentResults, CompetencyResult, CompetencyName } from '@/types/assessment';
+import { AnswerType, QuestionType, AssessmentResults, CompetencyResult, CompetencyName, UserFormData } from '@/types/assessment';
 
 type AssessmentContextType = {
   currentQuestionIndex: number;
   answers: AnswerType[];
+  userFormData: UserFormData | null;
+  setUserFormData: (data: UserFormData) => void;
   setCurrentQuestionIndex: (index: number) => void;
   saveAnswer: (answer: AnswerType) => void;
   questions: QuestionType[];
@@ -316,6 +319,7 @@ export const AssessmentProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [answers, setAnswers] = useState<AnswerType[]>([]);
   const [questions] = useState<QuestionType[]>(defaultQuestions);
   const [results, setResults] = useState<AssessmentResults | null>(null);
+  const [userFormData, setUserFormData] = useState<UserFormData | null>(null);
 
   const isComplete = answers.length === questions.length;
 
@@ -387,7 +391,9 @@ export const AssessmentProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         questions,
         isComplete,
         calculateResults,
-        results
+        results,
+        userFormData,
+        setUserFormData
       }}
     >
       {children}

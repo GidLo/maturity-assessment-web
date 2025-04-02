@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -20,7 +21,7 @@ const supabase = (supabaseUrl && supabaseKey)
 
 const Results = () => {
   const navigate = useNavigate();
-  const { results, isComplete } = useAssessment();
+  const { results, isComplete, userFormData } = useAssessment();
   const { toast } = useToast();
   const [isSaving, setIsSaving] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -118,15 +119,33 @@ const Results = () => {
       return;
     }
 
+    // Check if user form data is available
+    if (!userFormData) {
+      toast({
+        title: "Missing Information",
+        description: "User information is not available. Please restart the assessment from the beginning.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsSaving(true);
 
     try {
-      // Create the data object for Supabase
-      const resultData = {
+      // Create the data object for Supabase combining user form data and assessment results
+      const maturityAssessmentData = {
+        // User form data
+        industry: userFormData.industry,
+        company_name: userFormData.companyName,
+        role: userFormData.role,
+        
+        // Assessment results data
         completed_at: results.completedAt,
         overall_score: results.overallScore,
         max_possible_score: results.maxPossibleScore,
         overall_average: overallAverage.toFixed(1),
+        
+        // Competency data as JSON
         competencies: results.competencies.map(comp => ({
           name: comp.name,
           score: comp.score,
@@ -135,10 +154,10 @@ const Results = () => {
         }))
       };
 
-      // Insert data into Supabase
+      // Insert data into Supabase - MaturityAssessment table
       const { error } = await supabase
-        .from('assessment_results')
-        .insert([resultData]);
+        .from('MaturityAssessment')
+        .insert([maturityAssessmentData]);
 
       if (error) {
         console.error('Error saving to Supabase:', error);
