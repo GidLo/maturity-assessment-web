@@ -27,6 +27,7 @@ import {
 } from '@/components/ui/select';
 import { toast } from '@/components/ui/use-toast';
 import { ChevronRight } from 'lucide-react';
+import { UserFormData } from '@/types/assessment';
 
 const formSchema = z.object({
   industry: z.string({
@@ -84,8 +85,15 @@ const UserForm = () => {
   });
 
   function onSubmit(data: FormValues) {
+    // Ensure all required fields are present before saving to context
+    const userFormData: UserFormData = {
+      industry: data.industry,
+      companyName: data.companyName,
+      role: data.role,
+    };
+    
     // Save form data to context
-    setUserFormData(data);
+    setUserFormData(userFormData);
     
     console.log("Form data:", data);
     
